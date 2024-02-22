@@ -23,6 +23,19 @@
 </div>
 
 <script>
+    function del(boardId){
+        $.ajax({
+            url:`/api/boards/${boardId}`,
+            type: "delete"
+        }).done((res)=>{
+            $(`#board-${boardId}`).remove();
+        }).fail((res)=>{
+            alert(res.responseJSON.msg);
+            location.reload(); // 자동 새로고침
+
+        });
+    }
+
     $.ajax({
         url:"/api/boards",
         type:"get"
@@ -50,9 +63,7 @@
             <td>${board.author}</td>
             <td>
                 <div class="d-flex">
-                    <form action="#">
-                        <button class="btn btn-danger">삭제</button>
-                    </form>
+                        <button onclick="del(${board.id})" class="btn btn-danger">삭제</button>
                     <form action="/board/1/updateForm" method="get">
                         <button class="btn btn-warning">수정</button>
                     </form>
