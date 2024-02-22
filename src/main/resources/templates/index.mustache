@@ -64,7 +64,7 @@
             <td>
                 <div class="d-flex">
                         <button onclick="del(${board.id})" class="btn btn-danger">삭제</button>
-                    <form action="/board/1/updateForm" method="get">
+                    <form action="/board/${board.id}/updateForm" method="get">
                         <button class="btn btn-warning">수정</button>
                     </form>
                 </div>

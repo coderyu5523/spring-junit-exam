@@ -38,4 +38,10 @@ public class BoardApiController {
 
         return new ApiUtil<>(null);
     }
+    @PutMapping("/api/boards/{id}")
+    public ApiUtil<?> update(@PathVariable Integer id,@RequestBody BoardRequest.UpdateDTO requestDTO){
+
+        boardRepository.update(requestDTO,id);
+        return new ApiUtil<>(null);
+    }
 }
