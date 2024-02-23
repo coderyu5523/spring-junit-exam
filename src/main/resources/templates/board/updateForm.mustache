@@ -4,6 +4,7 @@
         <div class="card-header"><b>익명 글수정 화면입니다</b></div>
         <div class="card-body">
             <form>
+                <input type="hidden" id="id" value="{{board.id}}">
                 <div class="mb-3">
                     <input type="text" class="form-control" id="author" value="{{board.author}}">
                 </div>
@@ -21,6 +22,7 @@
 
 <script>
     function btnUpdate(){
+        let id= $("#id").val();
 
         let board={
             title:$("#title").val(),
@@ -28,7 +30,8 @@
             author:$("#author").val()
         };
         $.ajax({
-            url:"/api/boards/{{board.id}}",
+            <!--url:"/api/boards/{{board.id}}",-->
+            url:`/api/boards/${id}`,
             type:"put",
             data:JSON.stringify(board),
             contentType:"application/json; charset=utf-8"
